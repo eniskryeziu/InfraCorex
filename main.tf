@@ -1,17 +1,15 @@
 provider "aws" {
-  region = "us-east-1"
+  profile = "default"
+  region  = "eu-north-1"
 }
 
-provider "aws" {
-  region = "us-west-2"
-}
 
-resource "aws_s3_bucket" "ingracorex1" {
-  bucket = "ingracorex1"
+resource "aws_s3_bucket" "app_bucket_infra_corex_enis" {
+  bucket = var.s3_bucket_name
   acl    = "private"
-}
 
-resource "aws_s3_bucket" "ingracorex2" {
-  bucket = "ingracorex2"
-  acl    = "private"
+  tags = {
+    Name  = "app_bucket_infra_corex_enis"
+    Owner = "Enis Kryeziu"
+  }
 }
